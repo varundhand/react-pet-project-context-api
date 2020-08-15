@@ -1,0 +1,53 @@
+* {
+    border: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: ubuntu, Helvetica, sans-serif;
+}
+
+/* NavBar Component */
+
+img {
+    width: 15%; 
+}
+
+/* Pricing Component */
+
+.cart {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 90px;
+    cursor: pointer;
+}
+
+.badge {
+    font-size: medium;
+}
+
+.price {
+    position: fixed;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid black;
+    height: 40px;
+    right: 40%;
+    bottom: 80px;
+}
+
+/* List Component */
+
+.table {
+    width: 65%;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.quantity {
+    font-size: x-large;
+}
+
+.fa-plus-circle, .fa-minus-circle {
+    cursor: pointer;
+}
+
