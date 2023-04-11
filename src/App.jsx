@@ -6,9 +6,6 @@ import Pricing from './components/Pricing';
 
 export default function App() {
 
-  
-  // const [quantity, setQuantity] = useState(0);
-
   const pets = [
     {
       id: 'dog',
@@ -51,11 +48,13 @@ export default function App() {
     otter: 0,
   });
 
+  const [totalPrice,setTotalPrice] = useState(0)
+
   return (
     <div className="App">
       <Navbar />
-      <Pricing quantityObj={quantityObj} />
-      <List pets={pets}  quantityObj={quantityObj} setQuantityObj={setQuantityObj} />
+      <Pricing quantityObj={quantityObj} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>
+      <List pets={pets}  quantityObj={quantityObj} setQuantityObj={setQuantityObj} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>
     </div>
   );
 }

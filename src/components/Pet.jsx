@@ -7,16 +7,16 @@ const Pet = ({
   rating,
   quantityObj,
   setQuantityObj,
-  totalItems,
-  setTotalItems,
-  }) => {
-  
+  totalPrice,
+  setTotalPrice,
+}) => {
+  console.log(totalPrice);
 
   const starElement = <i className="fas fa-star"></i>;
 
   const handleIncrement = () => {
+    let totalPrice = 0;
     setQuantityObj((prevQuantityObj) => {
-
       // * Way 1
       // return {
       //   ...prevQuantityObj,
@@ -27,9 +27,17 @@ const Pet = ({
       // In useState hook, never mutate an Object or Array directly. Create a clone and modify it.
       const quantityObjAdd = structuredClone(prevQuantityObj);
       quantityObjAdd[id] = prevQuantityObj[id] + 1;
+      console.log("Runs this");
+      // console.log(totalPrice)
       return quantityObjAdd;
     });
+    
+    setTotalPrice((prevPrice) => {
+      console.log(prevPrice, price);
+      return prevPrice + price;
+    });
   };
+
   const handleDecrement = () => {
     setQuantityObj((prevQuantityObj) => {
       if (prevQuantityObj[id] === 0) {
@@ -41,6 +49,10 @@ const Pet = ({
         return quantityObjSubtract;
       }
     });
+
+    setTotalPrice((prevPrice) => {
+      return (prevPrice > 0 ? prevPrice - price : prevPrice) 
+    })
   };
 
   function starIcon(rating) {

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pricing = ({ quantityObj }) => {
+const Pricing = ({ quantityObj, totalPrice, setTotalPrice }) => {
   
   const getCartValue = () => {
     let totalValue = 0;
@@ -16,7 +16,7 @@ const Pricing = ({ quantityObj }) => {
       <input
         className="price text-center"
         type="text"
-        placeholder="Total Price"
+        placeholder = {totalPrice}
         disabled
       />
       <div className="cart bg-warning rounded text-center py-2">
