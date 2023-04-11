@@ -1,7 +1,7 @@
 import React from "react";
 import Pet from "./Pet";
 
-const List = () => {
+const List = ({pets, quantityObj, setQuantityObj,totalItems,setTotalItems}) => {
 
   // Double Deestructuring 
   // (Not Being used Anymore in the Application)
@@ -22,8 +22,10 @@ const List = () => {
           </tr>
         </thead>
         <tbody>
-          
-          
+          {/* we will be get the PET array here which we need to map */}
+          {pets.map(({name, id, price, rating}) => {
+            return (<Pet key={id} name={name} id={id} price={price} rating={rating} quantityObj={quantityObj} setQuantityObj={setQuantityObj} totalItems={totalItems} setTotalItems={setTotalItems}/>)
+          })}
         </tbody>
       </table>
     </div>

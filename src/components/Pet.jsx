@@ -1,32 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Pet = ({id = 1}) => {
+const Pet = ({
+  id,
+  name,
+  price,
+  rating,
+  quantityObj,
+  setQuantityObj,
+  totalItems,
+  setTotalItems,
+  }) => {
+  
 
   const starElement = <i className="fas fa-star"></i>;
-  // let stars = [];
-  // for (let i = 0; i < rating; i++) {
-  //   stars.push(starElement);
-  // }
 
+  const handleIncrement = () => {
+    setQuantityObj((prevQuantityObj) => {
+
+      // * Way 1
+      // return {
+      //   ...prevQuantityObj,
+      //   [id]: prevQuantityObj[id] + 1,
+      // }
+
+      // * Way 2
+      // In useState hook, never mutate an Object or Array directly. Create a clone and modify it.
+      const quantityObjAdd = structuredClone(prevQuantityObj);
+      quantityObjAdd[id] = prevQuantityObj[id] + 1;
+      return quantityObjAdd;
+    });
+  };
   const handleDecrement = () => {
-    
-  }
+    setQuantityObj((prevQuantityObj) => {
+      if (prevQuantityObj[id] === 0) {
+        return prevQuantityObj;
+      } else {
+        const quantityObjSubtract = structuredClone(prevQuantityObj);
+        console.log({ quantityObjSubtract });
+        quantityObjSubtract[id] = prevQuantityObj[id] - 1;
+        return quantityObjSubtract;
+      }
+    });
+  };
 
+  function starIcon(rating) {
+    let stars = [];
+    for (let i = 0; i < rating; i++) {
+      stars.push(<i key={Math.random()} className="fas fa-star"></i>);
+    }
+    return stars;
+  }
+  // const starIcon = <i className="fas fa-star"></i>
   return (
     <tr>
       <th scope="row">
-        <i className={`fas fa-${id} fa-2x`}></i>
+        <i className={`fa-solid fa-${id} fa-2x`}></i>
       </th>
       {/* <td>{id.charAt(0).toUpperCase() + id.slice(1)}</td> */}
-      <td>23</td>
-      <td><i className="fas fa-star"></i></td>
+      <td>{name}</td>
+      <td>{price}</td>
+      <td>{starIcon(rating)}</td>
       <td>
         <i
           className="fas fa-plus-circle fa-2x"
           id={id}
-          onClick={() => {}}
+          onClick={handleIncrement}
         ></i>
-        <span className="quantity"> {20} </span>
+        <span className="quantity"> {quantityObj[id]} </span>
         <i
           className="fas fa-minus-circle fa-2x"
           id={id}
